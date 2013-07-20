@@ -20,6 +20,11 @@ handlers:
   script: tick.application
   login: admin
 
+- url: /sms/.*
+  script: sms.application
+  login: required
+  secure: always
+
 - url: .*
   script: main.application
   login: required

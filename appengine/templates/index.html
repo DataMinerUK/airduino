@@ -3,10 +3,27 @@
 {% block body %}
 
 <div class="hero-unit">
-    <h2>Airduino</h2>
+  <h2>Airduino</h2>
+  <p>Send your flight numbers to <a href="mailto:flights@airduino.appspotmail.com">flights@airduino.appspotmail.com</a>.</p>
 </div>
 
 
-<p>Send your flight numbers to <a href="mailto:flights@airduino.appspotmail.com">flights@airduino.appspotmail.com</a>.</p>
+<form action="/sms/arduino" class="form-inline">
+  <fieldset>
+    <legend>Fake SMS to Arduino</legend>
+    <label class="checkbox">
+      <input name="on" type="checkbox">On
+    </label>
+    <button type="submit" class="btn">Send</button>
+  </fieldset>
+</form>
+
+<form action="/sms/appengine" class="form-inline">
+  <fieldset>
+    <legend>Fake SMS Flight Code to AppEngine</legend>
+    <input name="flight" type="text" placeholder="AF 3672">
+    <button type="submit" class="btn">Send</button>
+  </fieldset>
+</form>
 
 {% endblock %}

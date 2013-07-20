@@ -6,8 +6,6 @@ from google.appengine.ext.webapp.mail_handlers import InboundMailHandler
 import webapp2
 import email
 
-from model import *
-
 class ReceiveEmail(InboundMailHandler):
     """Receive a flight code by email."""
 
