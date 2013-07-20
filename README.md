@@ -28,5 +28,8 @@ Airduino was developed with the
 A tutorial of receiving SMS messages with the GSM library is
 [here](http://arduino.cc/en/Tutorial/GSMExamplesReceiveSMS).
 
-
+If you are using an Arduino Leonardo or Mega, there are extra considerations
+about connecting the GSM shield that you need to pay close attention to. Make
+sure to follow the instructions
+[here](http://arduino.cc/en/Guide/GSMShieldLeonardoMega).
 
