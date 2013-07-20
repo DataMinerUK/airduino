@@ -8,8 +8,8 @@ When the plane lands the motor is switched off. Thus the owner of the Airduino
 can monitor when his/her relative are in the air.
 
 
-Developing
-----------
+Developing: Google AppEngine
+----------------------------
 Airduino is a Google AppEngine Python application so you will need the SDK from
 [here](https://developers.google.com/appengine/downloads#Google_App_Engine_SDK_for_Python).
 
@@ -18,6 +18,15 @@ that you can roll back in the AppEngine console if necessary and then run the
 following command from the root of your cloned repository:
 
     <path-to-google_appengine-sdk>/appcfg.py --oauth2 update .
+
+
+Developing: Arduino
+-------------------
+Airduino was developed with the
+[Arduino GSM shield](http://arduino.cc/en/Main/ArduinoGSMShield).
+
+A tutorial of receiving SMS messages with the GSM library is
+[here](http://arduino.cc/en/Tutorial/GSMExamplesReceiveSMS).
 
 
 
