@@ -7,7 +7,7 @@ class SMSArduinoHandler(webapp2.RequestHandler):
     """SMS the Arduino"""
 
     @authenticated
-    def get(self):
+    def post(self):
         on = self.request.get('on') == 'on'
         logging.info("SMS Arduino: %s" % on)
 
@@ -17,7 +17,7 @@ class SMSAppEngineHandler(webapp2.RequestHandler):
     """SMS the AppEngine"""
 
     @authenticated
-    def get(self):
+    def post(self):
         flight = self.request.get('flight')
         logging.info("SMS AppEngine: %s" % flight)
 

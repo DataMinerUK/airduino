@@ -25,6 +25,11 @@ handlers:
   login: required
   secure: always
 
+- url: /configuration/.*
+  script: configuration.application
+  login: required
+  secure: always
+
 - url: .*
   script: main.application
   login: required

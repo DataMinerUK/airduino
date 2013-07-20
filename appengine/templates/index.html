@@ -8,7 +8,7 @@
 </div>
 
 
-<form action="/sms/arduino" class="form-inline">
+<form action="/sms/arduino" class="form-inline" method="post">
   <fieldset>
     <legend>Fake SMS to Arduino</legend>
     <label class="checkbox">
@@ -18,11 +18,35 @@
   </fieldset>
 </form>
 
-<form action="/sms/appengine" class="form-inline">
+<form action="/sms/appengine" class="form-inline" method="post">
   <fieldset>
     <legend>Fake SMS Flight Code to AppEngine</legend>
     <input name="flight" class="input-small" type="text" placeholder="AF 3672">
     <button type="submit" class="btn">Send</button>
+  </fieldset>
+</form>
+
+<form action="/configuration/arduino/phonenumber" class="form-inline" method="post">
+  <fieldset>
+    <legend>Set Arduino Phone Number</legend>
+    <input name="phonenumber" type="text" value="{{ configuration.arduino_phone_number }}" placeholder="Arduino Phone Number">
+    <button type="submit" class="btn">Set</button>
+  </fieldset>
+</form>
+
+<form action="/configuration/appengine/phonenumber" class="form-inline" method="post">
+  <fieldset>
+    <legend>Set AppEngine Phone Number for Flight Codes</legend>
+    <input name="phonenumber" type="text" value="{{ configuration.appengine_phone_number }}" placeholder="Twilio Phone Number">
+    <button type="submit" class="btn">Set</button>
+  </fieldset>
+</form>
+
+<form action="/configuration/twilio/key" class="form-inline" method="post">
+  <fieldset>
+    <legend>Set Twilio API Key</legend>
+    <input name="key" type="text" value="{{ configuration.twilio_key }}" placeholder="Twilio API Key">
+    <button type="submit" class="btn">Set</button>
   </fieldset>
 </form>
 

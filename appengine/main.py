@@ -8,6 +8,8 @@ from google.appengine.api import users
 from google.appengine.ext.webapp import template
 import webapp2
 
+from datastore import *
+
 
 def authenticated(method):
     @functools.wraps(method)
@@ -44,6 +46,7 @@ class MainHandler(BaseHandler):
     def get(self):
         self.render('index', {
             'current_user': users.get_current_user(),
+            'configuration': get_configuration(),
             'logout': users.create_logout_url("/")
         })
 
