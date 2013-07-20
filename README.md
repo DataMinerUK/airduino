@@ -19,6 +19,10 @@ following command from the root of your cloned repository:
 
     <path-to-google_appengine-sdk>/appcfg.py --oauth2 update .
 
+The URL to set up Twilio to notify on inbound SMS messages is:
+
+    http://<application-name>.appspot.com/sms/inbound
+
 
 Developing: Arduino
 -------------------

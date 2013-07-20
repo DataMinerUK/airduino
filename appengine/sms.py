@@ -31,6 +31,18 @@ class SMSAppEngineHandler(webapp2.RequestHandler):
 
         self.redirect('/')
 
+class InboundSMSHandler(webapp2.RequestHandler):
+    """Accept inbound SMS messages from Twilio"""
+
+    def post(self):
+        logging.info("Receive SMS Message")
+        flight = self.request.get('Body').strip()
+        logging.info("Receive SMS Message Body parameter: %s" % flight)
+
+        add_flight(flight)
+
+        self.response.write('OK')
+
 
 def send_sms(to, message):
     client = TwilioRestClient(get_twilio_sid(), get_twilio_token())
@@ -48,5 +60,6 @@ def send_sms(to, message):
 
 application = webapp2.WSGIApplication([
     ('/sms/arduino', SMSArduinoHandler),
-    ('/sms/appengine', SMSAppEngineHandler)
+    ('/sms/appengine', SMSAppEngineHandler),
+    ('/sms/inbound', InboundSMSHandler)
 ], debug=True)
