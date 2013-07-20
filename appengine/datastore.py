@@ -55,3 +55,18 @@ def set_twilio_token(twilio_token):
 
 def get_twilio_token():
     return get_configuration().twilio_token
+
+
+class Flight(db.Model):
+    code = db.StringProperty()
+
+def get_flights():
+    return Flight.all()
+
+def add_flight(code):
+    flight = Flight(code = code)
+    flight.put()
+
+def remove_flight(code):
+    for flight in Flight.all().filter("code =", code).fetch():
+      flight.delete()

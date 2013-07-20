@@ -1,10 +1,10 @@
 import logging
 
-from main import authenticated
 import webapp2
-
 from twilio.rest import TwilioRestClient
+
 from datastore import *
+from authentication import authenticated
 
 class SMSArduinoHandler(webapp2.RequestHandler):
     """SMS the Arduino"""
@@ -35,15 +35,12 @@ class SMSAppEngineHandler(webapp2.RequestHandler):
 def send_sms(to, message):
     client = TwilioRestClient(get_twilio_sid(), get_twilio_token())
 
+    from_ = get_appengine_phone_number()
     logging.info("Sending SMS to: %s" % to)
-    logging.info("Sending SMS from: %s" % get_appengine_phone_number())
+    logging.info("Sending SMS from: %s" % from_)
     logging.info("Sending SMS message: %s" % message)
 
-    rv = client.sms.messages.create(
-      to = to,
-      from_ = get_appengine_phone_number(),
-      body = message
-    )
+    rv = client.sms.messages.create(to = to, from_ = from_, body = message)
 
     logging.info("Twilio response: %s" % rv)
 
