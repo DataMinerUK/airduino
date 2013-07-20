@@ -42,10 +42,18 @@
   </fieldset>
 </form>
 
-<form action="/configuration/twilio/key" class="form-inline" method="post">
+<form action="/configuration/twilio/sid" class="form-inline" method="post">
   <fieldset>
-    <legend>Set Twilio API Key</legend>
-    <input name="key" type="text" value="{{ configuration.twilio_key }}" placeholder="Twilio API Key">
+    <legend>Set Twilio Account SID</legend>
+    <input name="sid" type="text" value="{{ configuration.twilio_sid }}" placeholder="Twilio Account SID">
+    <button type="submit" class="btn">Set</button>
+  </fieldset>
+</form>
+
+<form action="/configuration/twilio/token" class="form-inline" method="post">
+  <fieldset>
+    <legend>Set Twilio Authentication Token</legend>
+    <input name="token" type="text" value="{{ configuration.twilio_token }}" placeholder="Twilio Authentication Token">
     <button type="submit" class="btn">Set</button>
   </fieldset>
 </form>

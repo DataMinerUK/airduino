@@ -17,14 +17,26 @@ class ConfigurationArduinoPhoneNumberHandler(webapp2.RequestHandler):
         time.sleep(1)
         self.redirect('/')
 
-class ConfigurationTwilioKeyHandler(webapp2.RequestHandler):
-    """Set the Twilio Key"""
+class ConfigurationTwilioSIDHandler(webapp2.RequestHandler):
+    """Set the Twilio Application SID"""
 
     @authenticated
     def post(self):
-        key = self.request.get('key')
-        logging.info("Set Twilio Key: %s" % key)
-        set_twilio_key(key)
+        sid = self.request.get('sid')
+        logging.info("Set Twilio Application SID: %s" % sid)
+        set_twilio_sid(sid)
+
+        time.sleep(1)
+        self.redirect('/')
+
+class ConfigurationTwilioTokenHandler(webapp2.RequestHandler):
+    """Set the Twilio Authentication Token"""
+
+    @authenticated
+    def post(self):
+        token = self.request.get('token')
+        logging.info("Set Twilio Authentication Token: %s" % token)
+        set_twilio_token(token)
 
         time.sleep(1)
         self.redirect('/')
@@ -44,6 +56,7 @@ class ConfigurationAppEnginePhoneNumberHandler(webapp2.RequestHandler):
 
 application = webapp2.WSGIApplication([
     ('/configuration/arduino/phonenumber', ConfigurationArduinoPhoneNumberHandler),
-    ('/configuration/twilio/key', ConfigurationTwilioKeyHandler),
+    ('/configuration/twilio/sid', ConfigurationTwilioSIDHandler),
+    ('/configuration/twilio/token', ConfigurationTwilioTokenHandler),
     ('/configuration/appengine/phonenumber', ConfigurationAppEnginePhoneNumberHandler)
 ], debug=True)
