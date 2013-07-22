@@ -6,3 +6,5 @@
 *.iml
 .idea
 *.log
+*.box
+node_modules

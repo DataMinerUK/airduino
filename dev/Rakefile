@@ -1,0 +1,16 @@
+task :default => 'airduino.box'
+
+task :clean do
+  sh 'vagrant destroy -f'
+  sh 'vagrant box remove airduino virtualbox || true'
+  sh 'rm -f airduino.box'
+end
+
+file 'airduino.box' => FileList['site.pp', 'modules/**/*'] do
+  sh 'vagrant destroy -f'
+  sh 'vagrant box remove airduino virtualbox || true'
+  sh 'vagrant up'
+  sh 'rm -f airduino.box'
+  sh 'vagrant package --output airduino.box'
+  sh 'vagrant destroy -f'
+end

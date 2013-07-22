@@ -1,0 +1,19 @@
+Vagrant.configure("2") do |config|
+
+  config.vm.box = "quantal64"
+  config.vm.box_url = "https://github.com/downloads/roderik/VagrantQuantal64Box/quantal64.box"
+
+  config.ssh.forward_x11 = true
+
+  config.vm.hostname = "airduino"
+  config.vm.provider :virtualbox do |virtualbox|
+    virtualbox.name = "airduino"
+    # virtualbox.gui = true
+  end
+
+  config.vm.provision :puppet,
+    :options => "--modulepath=/vagrant/modules" do |puppet|
+    puppet.manifests_path = "."
+    puppet.manifest_file = "site.pp"
+  end
+end
